@@ -1,0 +1,328 @@
+/* Mobile-specific styles for devices under 768px */
+/* This file provides additional mobile optimizations beyond Tailwind's responsive utilities */
+
+@media (max-width: 767.98px) {
+  /* Registration page mobile optimizations */
+  .registration-form {
+    margin: 0 -1rem;
+    border-radius: 0;
+    min-height: 100vh;
+  }
+  
+  /* Header adjustments */
+  .registration-header h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  
+  .registration-header p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  /* Form container adjustments */
+  .form-container {
+    padding: 1rem;
+    margin: 0;
+  }
+  
+  /* Profile image mobile adjustments */
+  .profile-image-upload {
+    margin-bottom: 2rem;
+  }
+  
+  .profile-image-upload .w-20 {
+    width: 5rem;
+    height: 5rem;
+  }
+  
+  /* Form field mobile optimizations */
+  .form-field {
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-field label {
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    font-size: 1rem; /* Prevent zoom on iOS */
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+  }
+  
+  /* User type selector mobile */
+  .user-type-selector .grid {
+    gap: 0.75rem;
+  }
+  
+  .user-type-selector label {
+    padding: 1rem 0.75rem;
+    min-height: 4rem;
+  }
+  
+  .user-type-selector .w-8 {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  
+  /* Member/Non-member fields */
+  .member-fields,
+  .non-member-fields {
+    margin-top: 1.5rem;
+  }
+  
+  .member-fields h3,
+  .non-member-fields h3 {
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Info boxes mobile */
+  .info-box {
+    padding: 0.75rem;
+    margin-top: 1rem;
+  }
+  
+  .info-box h4 {
+    font-size: 0.875rem;
+  }
+  
+  .info-box ul li {
+    font-size: 0.75rem;
+  }
+  
+  /* Terms checkbox mobile */
+  .terms-section {
+    padding: 1rem;
+    margin-top: 1.5rem;
+  }
+  
+  .terms-section label {
+    font-size: 0.875rem;
+    line-height: 1.4;
+  }
+  
+  /* Submit button mobile */
+  .submit-button {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    margin-top: 1.5rem;
+    border-radius: 0.75rem;
+  }
+  
+  /* Back to top button mobile */
+  .back-to-top {
+    bottom: 1rem;
+    right: 1rem;
+    width: 3rem;
+    height: 3rem;
+  }
+  
+  /* Navigation adjustments for mobile */
+  .navigation-mobile {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background: white;
+    border-top: 1px solid #e5e7eb;
+    padding: 0.5rem;
+  }
+  
+  /* Keyboard adjustments for mobile forms */
+  .form-field input:focus,
+  .form-field select:focus,
+  .form-field textarea:focus {
+    transform: none; /* Disable transform on focus for mobile */
+    zoom: 1; /* Prevent browser zoom */
+  }
+  
+  /* Touch targets - ensure minimum 44px touch targets */
+  button,
+  input[type="checkbox"],
+  input[type="radio"],
+  .clickable {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Improve checkbox and radio button sizes */
+  input[type="checkbox"],
+  input[type="radio"] {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-right: 0.75rem;
+  }
+  
+  /* Password strength indicator mobile */
+  .password-strength {
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+  }
+  
+  /* Error messages mobile */
+  .error-message {
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+  }
+  
+  /* Loading states mobile */
+  .loading-spinner {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  
+  /* Section spacing mobile */
+  .form-section {
+    margin-bottom: 2rem;
+  }
+  
+  .form-section:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+  /* Even smaller adjustments for very small screens */
+  .registration-header h1 {
+    font-size: 1.75rem;
+  }
+  
+  .form-container {
+    padding: 0.75rem;
+  }
+  
+  .user-type-selector label {
+    padding: 0.75rem 0.5rem;
+    min-height: 3.5rem;
+  }
+  
+  .grid.grid-cols-2 {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  /* Reduce icon sizes */
+  .w-6.h-6 {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  
+  .w-5.h-5 {
+    width: 1rem;
+    height: 1rem;
+  }
+  
+  /* Adjust form field spacing */
+  .form-field {
+    margin-bottom: 1.25rem;
+  }
+  
+  /* Smaller info boxes */
+  .info-box {
+    padding: 0.5rem;
+  }
+  
+  .info-box ul li {
+    font-size: 0.7rem;
+  }
+}
+
+/* Landscape phones */
+@media (max-width: 767.98px) and (orientation: landscape) {
+  .registration-form {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  
+  .registration-header {
+    margin-bottom: 1.5rem;
+  }
+  
+  .registration-header h1 {
+    font-size: 1.75rem;
+  }
+  
+  .form-section {
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* iOS Safari specific fixes */
+@supports (-webkit-appearance: none) {
+  @media (max-width: 767.98px) {
+    /* Fix iOS input zoom */
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="password"],
+    input[type="date"],
+    select,
+    textarea {
+      font-size: 16px !important; /* Prevent zoom on iOS */
+    }
+    
+    /* Fix iOS button styles */
+    button {
+      -webkit-appearance: none;
+      border-radius: 0.5rem;
+    }
+    
+    /* Fix iOS checkbox/radio styles */
+    input[type="checkbox"],
+    input[type="radio"] {
+      -webkit-appearance: none;
+    }
+  }
+}
+
+/* Android specific fixes */
+@media (max-width: 767.98px) {
+  /* Prevent text size adjustment on orientation change */
+  html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+  }
+  
+  /* Smooth scrolling for Android */
+  body {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+}
+
+/* High DPI/Retina displays */
+@media (max-width: 767.98px) and (-webkit-min-device-pixel-ratio: 2) {
+  /* Sharper borders on retina displays */
+  .form-field input,
+  .user-type-selector label,
+  .info-box {
+    border-width: 0.5px;
+  }
+}
+
+/* Dark mode mobile adjustments */
+@media (max-width: 767.98px) and (prefers-color-scheme: dark) {
+  .registration-form {
+    background-color: #1f2937;
+    color: #f9fafb;
+  }
+  
+  .form-field input {
+    background-color: #374151;
+    border-color: #4b5563;
+    color: #f9fafb;
+  }
+  
+  .info-box {
+    background-color: #374151;
+    border-color: #4b5563;
+  }
+}

@@ -1,0 +1,49 @@
+/* Clean Registration Styles */
+
+/* Remove any complex animations and effects */
+.registration-form {
+  transition: none;
+}
+
+/* Simple form field styling */
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+/* Clean submit button */
+.submit-button {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  transition: background-color 0.2s ease;
+}
+
+.submit-button:hover {
+  background: #2563eb;
+}
+
+.submit-button:disabled {
+  background: #d1d5db;
+  cursor: not-allowed;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .registration-form {
+    padding: 1rem;
+  }
+  
+  .form-field {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Remove all complex animations */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
