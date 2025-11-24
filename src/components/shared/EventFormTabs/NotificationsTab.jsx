@@ -106,12 +106,13 @@ const NotificationsTab = ({ formData, handleArrayAdd, handleArrayUpdate, handleA
                         Update #{index + 1}
                       </span>
                       <span className="text-sm text-gray-500 dark:text-gray-400">
-                        {new Date(notification.createdAt).toLocaleDateString('en-US', { 
+                        {new Date(notification.createdAt).toLocaleDateString('en-IN', { 
                           month: 'short', 
                           day: 'numeric', 
                           year: 'numeric',
                           hour: '2-digit',
-                          minute: '2-digit'
+                          minute: '2-digit',
+                          timeZone: 'Asia/Kolkata'
                         })}
                       </span>
                     </div>
@@ -187,22 +188,39 @@ const NotificationsTab = ({ formData, handleArrayAdd, handleArrayUpdate, handleA
                     type="datetime-local"
                     value={(() => {
                       if (!notification.createdAt) return '';
+                      // Convert UTC timestamp to local datetime-local format
                       const date = new Date(notification.createdAt);
-                      const offsetMs = date.getTimezoneOffset() * 60 * 1000;
-                      const localDate = new Date(date.getTime() - offsetMs);
-                      return localDate.toISOString().slice(0, 16);
+                      // Get local time components
+                      const year = date.getFullYear();
+                      const month = String(date.getMonth() + 1).padStart(2, '0');
+                      const day = String(date.getDate()).padStart(2, '0');
+                      const hours = String(date.getHours()).padStart(2, '0');
+                      const minutes = String(date.getMinutes()).padStart(2, '0');
+                      return `${year}-${month}-${day}T${hours}:${minutes}`;
                     })()}
-                    onChange={(e) => handleArrayUpdate('notifications', index, { 
-                      ...notification, 
-                      createdAt: e.target.value ? new Date(e.target.value).toISOString() : new Date().toISOString() 
-                    })}
+                    onChange={(e) => {
+                      if (!e.target.value) {
+                        handleArrayUpdate('notifications', index, { 
+                          ...notification, 
+                          createdAt: new Date().toISOString() 
+                        });
+                        return;
+                      }
+                      // Convert local datetime to UTC ISO string
+                      // datetime-local gives us local time, so we create a Date object which will be in local timezone
+                      const localDate = new Date(e.target.value);
+                      handleArrayUpdate('notifications', index, { 
+                        ...notification, 
+                        createdAt: localDate.toISOString()
+                      });
+                    }}
                     className="w-full px-4 py-3 border border-gray-200 dark:border-gray-600 rounded-xl bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                   />
                   <p className="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1.5">
                     <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
-                    This date will be shown to attendees as when the update was published
+                    Set date/time in your local timezone (IST). This will be shown to attendees as when the update was published.
                   </p>
                 </div>
               </div>

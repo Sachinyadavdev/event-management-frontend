@@ -1472,7 +1472,15 @@ const NotificationsList = ({ notifications }) => {
               {notification.body}
             </p>
             <p className="text-xs text-gray-500 dark:text-gray-400">
-              {new Date(notification.createdAt).toLocaleDateString()}
+              {new Date(notification.createdAt).toLocaleString('en-IN', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                timeZone: 'Asia/Kolkata',
+                hour12: true
+              })} IST
             </p>
           </div>
         ))}
@@ -3556,8 +3564,16 @@ const EventDetails = () => {
                           <h3 className="font-semibold text-gray-900 dark:text-white">{notification.title}</h3>
                           <p className="text-gray-600 dark:text-gray-400 mt-1">{notification.body}</p>
                         </div>
-                        <span className="text-xs text-gray-500 dark:text-gray-400">
-                          {new Date(notification.createdAt).toLocaleDateString()}
+                        <span className="text-xs text-gray-500 dark:text-gray-400 whitespace-nowrap ml-4">
+                          {new Date(notification.createdAt).toLocaleString('en-IN', {
+                            day: '2-digit',
+                            month: '2-digit',
+                            year: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit',
+                            timeZone: 'Asia/Kolkata',
+                            hour12: true
+                          })}
                         </span>
                       </div>
                     </div>

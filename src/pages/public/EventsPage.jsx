@@ -17,9 +17,8 @@ const EventsPage = () => {
       setLoading(true);
       setError(null);
       try {
-        // Fetch all events from backend
+        // Fetch ALL events from backend (no status filter on API call)
         const response = await eventsAPI.getAll({ 
-          status: statusFilter === 'all' ? undefined : statusFilter,
           limit: 100 // Get all events
         });
         
@@ -76,7 +75,7 @@ const EventsPage = () => {
     };
 
     fetchEvents();
-  }, [statusFilter]);
+  }, []); // Remove statusFilter dependency - load all events once
 
   const allEvents = events;
 
@@ -92,6 +91,12 @@ const EventsPage = () => {
     { key: 'ongoing', label: 'Ongoing', count: allEvents.filter(e => e.status === 'ongoing').length },
     { key: 'completed', label: 'Completed', count: allEvents.filter(e => e.status === 'completed').length }
   ];
+  
+  // Calculate category counts based on currently selected status
+  const getCategoryCount = (category) => {
+    if (category === 'all') return statusFilteredEvents.length;
+    return statusFilteredEvents.filter(e => e.category.toLowerCase() === category).length;
+  };
 
   return (
     <PublicLayout>
@@ -173,7 +178,7 @@ const EventsPage = () => {
               >
                 {category === 'all' ? 'All Events' : category.charAt(0).toUpperCase() + category.slice(1)}
                 <span className="ml-2 text-xs">
-                  ({category === 'all' ? allEvents.length : allEvents.filter(e => e.category.toLowerCase() === category).length})
+                  ({getCategoryCount(category)})
                 </span>
               </button>
             ))}
